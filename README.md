@@ -43,15 +43,14 @@ python run.py
 
 The hyperparameters, the tasks and the learning algorithm can be change via change the run.py, for example
 ```bash
- alg = 'ppo2_lyapunov'
- # alg='ppo2'
- additional_description ='-clip-0.8'
+alg = 'ppo2_lyapunov'
+additional_description ='-test'
 # env = 'Pointcircle-v0'
 # env = 'Antcons-v0'
 # env = 'HalfCheetahcons-v0'
 # env = 'Quadrotorcons-v0'
-# env = 'PongNoFrameskip-v5'
-env = 'Point-v1'
+env = 'PongNoFrameskip-v5'
+log_path = './log/' + env + '/' + alg + additional_description + '/' + str(i)
 info = ['--num_timesteps=2e7', '--save_path=./Model/'+env]
 ```
 ### Example 2. LAC with continous cartpole
