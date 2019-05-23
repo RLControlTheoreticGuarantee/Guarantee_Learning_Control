@@ -46,13 +46,13 @@ The hyperparameters, the tasks and the learning algorithm can be change via chan
  alg = 'ppo2_lyapunov'
  # alg='ppo2'
  additional_description ='-clip-0.8'
- env = 'Pointcircle-v0'
+# env = 'Pointcircle-v0'
 # env = 'Antcons-v0'
 # env = 'HalfCheetahcons-v0'
 # env = 'Quadrotorcons-v0'
 # env = 'PongNoFrameskip-v5'
-# env = 'Point-v1'
-info = ['--num_timesteps=5e6', '--save_path=./Model/'+env]
+env = 'Point-v1'
+info = ['--num_timesteps=2e7', '--save_path=./Model/'+env]
 ```
 ### Example 2. LAC with continous cartpole
 ```
@@ -61,9 +61,9 @@ python main_for_sac.py
 The hyperparameters, the tasks and the learning algorithm can be change via change the variant.py, for example
 ```bash
 VARIANT = {
-    'env_name': 'Carcost-v0',
-    'algorithm_name': 'LAC',
-    'additional_description': '-continuous-25',
+    'env_name': 'CartPolecons-v0',
+    'algorithm_name': 'LSAC',
+    'additional_description': '-test-1',
     'evaluate': False,
     'train':True,
     'evaluation_frequency': 2048,
