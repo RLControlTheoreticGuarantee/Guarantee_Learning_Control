@@ -67,7 +67,7 @@ And all the hyperparameters could be changed via change the defaults.py in every
 ```
 python main_for_sac.py
 ```
-The hyperparameters, the tasks and the learning algorithm can be change via change the variant.py, for example:
+The hyperparameters, the tasks and the learning algorithm can be changed via change the variant.py, for example:
 
 
 
