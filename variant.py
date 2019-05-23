@@ -2,9 +2,9 @@ import gym
 import datetime
 SEED = None
 VARIANT = {
-    'env_name': 'Pointcircle-v0',
-    'algorithm_name': 'SSAC',
-    'additional_description': '-0.5',
+    'env_name': 'CartPolecons-v0',
+    'algorithm_name': 'LSAC',
+    'additional_description': '-Test',
     'evaluate': False,
     'train':True,
     'evaluation_frequency': 2048,
