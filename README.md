@@ -45,11 +45,11 @@ The hyperparameters, the tasks and the learning algorithm can be changed via cha
 
 
 
-The alg could be ['ppo2_lyapunov','ppo2','sppo']
+The alg could be one of ['ppo2_lyapunov','ppo2','sppo']
 
 
 
-The env could be ['PongNoFrameskip-v5','HalfCheetahcons-v0','Pointcircle-v0','Antcons-v0']
+The env could be one of ['PongNoFrameskip-v5','HalfCheetahcons-v0','Pointcircle-v0','Antcons-v0']
 
 
 
@@ -71,12 +71,12 @@ The hyperparameters, the tasks and the learning algorithm can be changed via cha
 
 
 
-The env_name could be ['CartPolecons-v0','CartPolecost-v0','Antcons-v0', 'HalfCheetahcons-v0','Pointcircle-v0','Quadrotorcons-v0','Quadrotorcost-v0','FetchReach-v1', 'Carcost-v0']
+The env_name could be one of ['CartPolecons-v0','CartPolecost-v0','Antcons-v0', 'HalfCheetahcons-v0','Pointcircle-v0','Quadrotorcons-v0','Quadrotorcost-v0','FetchReach-v1', 'Carcost-v0']
 
 
 
 
-The algorithm_name could be ['SAC_lyapunov', 'SAC', 'SSAC','CPO', 'CPO_lyapunov', 'PDO', 'DDPG','LAC','SAC_cost']
+The algorithm_name could be one of ['SAC_lyapunov', 'SAC', 'SSAC','CPO', 'CPO_lyapunov', 'PDO', 'DDPG','LAC','SAC_cost']
 
 
 
