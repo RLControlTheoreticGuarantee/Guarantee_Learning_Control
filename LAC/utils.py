@@ -1,6 +1,6 @@
 import numpy as np
 from collections import OrderedDict
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 def get_evaluation_rollouts(policy, env, num_of_paths, max_ep_steps, render= True):
 
