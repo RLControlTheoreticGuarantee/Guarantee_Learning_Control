@@ -2,7 +2,7 @@ import gym
 import datetime
 SEED = None
 VARIANT = {
-    'env_name': 'cartpole_cost',
+    'env_name': 'CartPolecost-v0',
     'algorithm_name': 'LAC',
     # 'algorithm_name': 'SAC_cost',
     'additional_description': '-value-perturb',
@@ -16,38 +16,38 @@ VARIANT = {
 }
 VARIANT['log_path']='/'.join(['./log', VARIANT['env_name'], VARIANT['algorithm_name'] + VARIANT['additional_description']])
 ENV_PARAMS = {
-    'cartpole': {
+    'CartPolecons-v0': {
         'max_ep_steps': 250,
         'max_global_steps': int(6e5),
-        'max_episodes': int(6e5),
+        'max_episodes': int(1e5),
         'eval_render': False,},
-    'cartpole_cost': {
+    'CartPolecost-v0':  {
         'max_ep_steps': 250,
         'max_global_steps': int(3e5),
         'max_episodes': int(1e5),
         'impulse_mag':85,
         'eval_render': False,},
-    'Antcpo-v1': {
+    'Antcons-v0': {
         'max_ep_steps': 200,
-        'max_global_steps': int(1e6),
-        'max_episodes': int(4e6),
-        'eval_render': False,},
-    'HalfCheetah-v4': {
-        'max_ep_steps': 200,
-        'max_global_steps': int(6e5),
+        'max_global_steps': int(4e6),
         'max_episodes': int(1e6),
         'eval_render': False,},
-    'PointCircle-v1': {
+    'HalfCheetahcons-v0': {
+        'max_ep_steps': 200,
+        'max_global_steps': int(1e7),
+        'max_episodes': int(1e6),
+        'eval_render': False,},
+    'Pointcircle-v0': {
         'max_ep_steps': 65,
-        'max_global_steps': int(1e6),
+        'max_global_steps': int(4e6),
         'max_episodes': int(1e6),
         'eval_render': False,},
-    'Quadrotor-v1': {
+    'Quadrotorcons-v0': {
         'max_ep_steps': 2000,
-        'max_global_steps': int(3e6),
+        'max_global_steps': int(1e7),
         'max_episodes': int(1e6),
         'eval_render': False,},
-    'Quadrotor-v1_cost': {
+    'Quadrotorcost-v0': {
         'max_ep_steps': 2000,
         'max_global_steps': int(1e6),
         'max_episodes': int(1e6),
@@ -59,7 +59,7 @@ ENV_PARAMS = {
         'max_episodes': int(1e6),
         'eval_render': False, },
 
-    'car_env': {
+    'Carcost-v0': {
         'max_ep_steps': 50,
         'max_global_steps': int(5e5),
         'max_episodes': int(1e6),
@@ -67,7 +67,7 @@ ENV_PARAMS = {
 
      }
 ALG_PARAMS = {
-    'LSAC': {
+    'SAC_lyapunov': {
         'memory_capacity': int(1e6),
         'cons_memory_capacity': int(1e6),
         'min_memory_size': 1000,
@@ -142,7 +142,7 @@ ALG_PARAMS = {
         'cliprange':0.2,
         'delta':0.01,
         'form_of_lyapunov': 'l_reward',
-        'safety_threshold': 10.,
+        'safety_threshold': 0.,
         'use_lyapunov': False,
         'use_adaptive_alpha3': False,
         'use_baseline':False,
@@ -204,7 +204,7 @@ ALG_PARAMS = {
         'batch_size': 256,
         'labda': 1.,
         'alpha': 1.,
-        'alpha3':1.,
+        'alpha3':.5,
         'tau': 5e-3,
         'lr_a': 1e-4,
         'lr_c': 3e-4,
@@ -214,7 +214,7 @@ ALG_PARAMS = {
         'train_per_cycle': 50,
         'use_lyapunov': True,
         'adaptive_alpha': True,
-        'approx_value':True,
+        'approx_value':False,
         'target_entropy': None
     },
     'SAC_cost': {
@@ -241,37 +241,28 @@ VARIANT['env_params']=ENV_PARAMS[VARIANT['env_name']]
 VARIANT['alg_params']=ALG_PARAMS[VARIANT['algorithm_name']]
 RENDER = True
 def get_env_from_name(name):
-    if name == 'cartpole':
-        from envs.ENV_V0 import CartPoleEnv_adv as dreamer
-        env = dreamer()
-        env = env.unwrapped
-    elif name == 'cartpole_cost':
-        from envs.ENV_V1 import CartPoleEnv_adv as dreamer
-        env = dreamer()
-        env = env.unwrapped
-    elif name == 'car_env':
-        from envs.car_env import CarEnv
-        env = CarEnv()
-
-    elif name == 'Quadrotor-v1_cost':
-        env = gym.make('Quadrotor-v1')
+    if name == 'Quadrotorcost-v0':
+        env = gym.make('Quadrotorcons-v0')
         env = env.unwrapped
         env.modify_action_scale = False
         env.use_cost = True
+    elif name == 'Carcost-v0':
+        from ENV.env.classic_control.car_env import CarEnv
+        env = CarEnv()
+
     else:
         env = gym.make(name)
         env = env.unwrapped
-        if name == 'Quadrotor-v1':
+        if name == 'Quadrotorcons-v0':
             if 'CPO' not in VARIANT['algorithm_name']:
                 env.modify_action_scale = False
         if 'Fetch' in name or 'Hand' in name:
             env.unwrapped.reward_type = 'dense'
-    env.seed(SEED)
     return env
 
 
 def get_policy(name):
-    if name == 'SAC'or name == 'LSAC':
+    if name == 'SAC'or name == 'SAC_lyapunov':
         from SAC.SAC_V1 import SAC_with_lyapunov
         build_fn = SAC_with_lyapunov
     elif name=='SSAC':
@@ -290,7 +281,7 @@ def get_policy(name):
 
 
 def get_train(name):
-    if name == 'SAC'or name == 'LSAC':
+    if name == 'SAC'or name == 'SAC_lyapunov':
         from SAC.SAC_V1 import train
     elif name=='SSAC':
         from SSAC.SSAC_V1 import train
