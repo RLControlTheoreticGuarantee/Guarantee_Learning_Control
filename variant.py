@@ -3,7 +3,7 @@ import datetime
 SEED = None
 VARIANT = {
     'env_name': 'CartPolecons-v0',
-    'algorithm_name': 'LSAC',
+    'algorithm_name': 'SAC_lyapunov',
     'additional_description': '-Test',
     'evaluate': False,
     'train':True,
