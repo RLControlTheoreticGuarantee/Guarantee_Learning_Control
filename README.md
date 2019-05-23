@@ -61,14 +61,14 @@ The hyperparameters, the tasks and the learning algorithm can be change via chan
 ```bash
 VARIANT = {
     'env_name': 'CartPolecons-v0',
-    'algorithm_name': 'LSAC',
-    'additional_description': '-test-1',
+    'algorithm_name': 'SAC_lyapunov',
+    'additional_description': '-Test',
     'evaluate': False,
     'train':True,
     'evaluation_frequency': 2048,
     'num_of_paths': 1,
-    'num_of_trials': 10,
-    'store_last_n_paths': 5,
+    'num_of_trials': 5,
+    'store_last_n_paths': 10,
     'start_of_trial': 0,
 }
 ```
