@@ -35,29 +35,36 @@ pip install matplotlib
 
 ```
 
-### Example 1. LPPO with MuJoCo Point-Circle
-For instance, to train a fully-connected network controlling MuJoCo Point-Circle using LPPO for 2M timesteps
+### Example 1. LPPO with Atari Pong
+For instance, to train a CNN network controlling Atari Pong using LPPO for 20M timesteps
 ```bash
 python run.py
 ```
 
-The hyperparameters, the tasks and the learning algorithm can be change via change the run.py, for example
+The hyperparameters, the tasks and the learning algorithm can be changed via change the run.py, for example:
+The alg could be ['ppo2_lyapunov','ppo2','sppo']
+The env could be ['PongNoFrameskip-v5','HalfCheetahcons-v0','Pointcircle-v0','Antcons-v0']
+The info could control the training setting.
 ```bash
 alg = 'ppo2_lyapunov'
-additional_description ='-test'
-# env = 'Pointcircle-v0'
-# env = 'Antcons-v0'
-# env = 'HalfCheetahcons-v0'
-# env = 'Quadrotorcons-v0'
+additional_description ='-test' 
 env = 'PongNoFrameskip-v5'
 log_path = './log/' + env + '/' + alg + additional_description + '/' + str(i)
 info = ['--num_timesteps=2e7', '--save_path=./Model/'+env]
 ```
-### Example 2. LAC with continous cartpole
+
+And all the hyperparameters could be changed via change the defaults.py in every algorithms' file.
+### Example 2. LSAC with continous cartpole
 ```
 python main_for_sac.py
 ```
-The hyperparameters, the tasks and the learning algorithm can be change via change the variant.py, for example
+The hyperparameters, the tasks and the learning algorithm can be change via change the variant.py, for example:
+
+The env_name could be ['CartPolecons-v0','CartPolecost-v0','Antcons-v0', 'HalfCheetahcons-v0','Pointcircle-v0','Quadrotorcons-v0','Quadrotorcost-v0','FetchReach-v1', 'Carcost-v0']
+
+The algorithm_name could be ['SAC_lyapunov', 'SAC', 'SSAC','CPO', 'CPO_lyapunov', 'PDO', 'DDPG','LAC','SAC_cost']
+
+Other hyperparameter are also ajustable in variant.py.
 ```bash
 VARIANT = {
     'env_name': 'CartPolecons-v0',
