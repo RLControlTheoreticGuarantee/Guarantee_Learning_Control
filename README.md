@@ -42,8 +42,17 @@ python run.py
 ```
 
 The hyperparameters, the tasks and the learning algorithm can be changed via change the run.py, for example:
+
+
+
 The alg could be ['ppo2_lyapunov','ppo2','sppo']
+
+
+
 The env could be ['PongNoFrameskip-v5','HalfCheetahcons-v0','Pointcircle-v0','Antcons-v0']
+
+
+
 The info could control the training setting.
 ```bash
 alg = 'ppo2_lyapunov'
@@ -60,9 +69,16 @@ python main_for_sac.py
 ```
 The hyperparameters, the tasks and the learning algorithm can be change via change the variant.py, for example:
 
+
+
 The env_name could be ['CartPolecons-v0','CartPolecost-v0','Antcons-v0', 'HalfCheetahcons-v0','Pointcircle-v0','Quadrotorcons-v0','Quadrotorcost-v0','FetchReach-v1', 'Carcost-v0']
 
+
+
+
 The algorithm_name could be ['SAC_lyapunov', 'SAC', 'SSAC','CPO', 'CPO_lyapunov', 'PDO', 'DDPG','LAC','SAC_cost']
+
+
 
 Other hyperparameter are also ajustable in variant.py.
 ```bash
