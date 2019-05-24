@@ -97,7 +97,7 @@ class CartPoleEnv_cost(gym.Env):
         self.np_random, seed = seeding.np_random(seed)
         return [seed]
 
-    def step(self, action):
+    def step(self, action, impulse=0):
         a = 0
         action = np.clip(action, self.action_space.low, self.action_space.high)
         # self.gravity = np.random.normal(10, 2)
@@ -107,6 +107,7 @@ class CartPoleEnv_cost(gym.Env):
         state = self.state
         x, x_dot, theta, theta_dot = state
         force = np.random.normal(action, 1)# wind
+        force = force + impulse
         # force = action
         costheta = math.cos(theta)
         sintheta = math.sin(theta)
