@@ -2,15 +2,14 @@ import gym
 import datetime
 SEED = None
 VARIANT = {
-    'env_name': 'CartPolecost-v0',
-    'algorithm_name': 'LAC',
-    # 'algorithm_name': 'SAC_cost',
-    'additional_description': '-value-perturb',
+    'env_name': 'CartPolecons-v0',
+    'algorithm_name': 'SAC_lyapunov',
+    'additional_description': '-Test',
     'evaluate': False,
-    'train':False,
+    'train':True,
     'evaluation_frequency': 2048,
     'num_of_paths': 1,
-    'num_of_trials': 500,
+    'num_of_trials': 5,
     'store_last_n_paths': 10,
     'start_of_trial': 0,
 }
