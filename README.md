@@ -96,6 +96,7 @@ VARIANT = {
 }
 ```
 ### Example 3. SAC/LAC cartpole stability against perturbations
+```bash
 VARIANT = {
     'env_name': 'CartPolecost-v0',
     'algorithm_name': 'LAC',
@@ -109,3 +110,4 @@ VARIANT = {
     'store_last_n_paths': 10,
     'start_of_trial': 0,
 }
+```
