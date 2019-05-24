@@ -145,16 +145,15 @@ def plot_results(results,alg_list, contents, figsize = None):
 
     return
 ENV_LIST = ['CartPolecons-v0',
-            'cartpole',
-            'HalfCheetah-v4',
-            'PointCircle-v1',
-            'PongNoFrameskip-v4',
             'CartPolecost-v0',
+            'Antcons-v0',
+            'HalfCheetahcons-v0',
+            'PongNoFrameskip-v5',
+            'Pointcircle-v0',
             'FetchReach-v1',
-            'Antcpo-v1',
-            'Quadrotor-v1',
-            'Quadrotor-v1_cost',
-            'car_env']
+            'Quadrotorcons-v0',
+            'Quadrotorcost-v0'
+            'Carcost-v0']
 
 PLOT_CONTENT = ['eprewmean', 'eplrewmean','violation_times','eplenmean','lyapunov_lambda', 'eval_eprewmean', 'eval_eplrewmean']
 ALG_LIST = ['ppo2', 'SAC','CPO', 'LAC']

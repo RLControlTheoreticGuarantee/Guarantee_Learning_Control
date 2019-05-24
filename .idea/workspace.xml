@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="94a88117-502f-4592-ad64-e6e322291e6e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/LAC/LAC_V1.py" beforeDir="false" afterPath="$PROJECT_DIR$/LAC/LAC_V1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/cartpole_cost/LAC-value-perturb/0/checkpoint" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/cartpole_cost/LAC-value-perturb/0/model.ckpt.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/cartpole_cost/LAC-value-perturb/0/model.ckpt.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/cartpole_cost/LAC-value-perturb/0/model.ckpt.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/cartpole_cost/LAC-value-perturb/0/progress.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/cartpole_cost/LAC-value-perturb/eval/0/progress.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/cartpole_cost/SAC_cost-value-perturb/0/checkpoint" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/cartpole_cost/SAC_cost-value-perturb/0/model.ckpt.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/cartpole_cost/SAC_cost-value-perturb/0/model.ckpt.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/cartpole_cost/SAC_cost-value-perturb/0/model.ckpt.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/cartpole_cost/SAC_cost-value-perturb/0/progress.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/cartpole_cost/SAC_cost-value-perturb/eval/0/progress.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/my_plottrer.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_plottrer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/variant.py" beforeDir="false" afterPath="$PROJECT_DIR$/variant.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,8 +18,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/variant.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="17" column="32" lean-forward="true" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+            <state relative-caret-position="306">
+              <caret line="73" column="15" lean-forward="true" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="15" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -44,8 +30,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/my_plottrer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="167" column="53" lean-forward="true" selection-start-line="167" selection-start-column="53" selection-end-line="167" selection-end-column="53" />
+            <state relative-caret-position="477">
+              <caret line="154" column="30" selection-start-line="154" selection-start-column="30" selection-end-line="154" selection-end-column="30" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -138,6 +124,7 @@
         <option value="$PROJECT_DIR$/LAC/SRDDPG_V8.py" />
         <option value="$PROJECT_DIR$/LAC/LAC_V1.py" />
         <option value="$PROJECT_DIR$/variant.py" />
+        <option value="$PROJECT_DIR$/my_plottrer.py" />
       </list>
     </option>
   </component>
@@ -220,12 +207,12 @@
       <updated>1558598475367</updated>
       <workItem from="1558598476704" duration="76000" />
       <workItem from="1558688735097" duration="79000" />
-      <workItem from="1558689082445" duration="1879000" />
+      <workItem from="1558689082445" duration="2098000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2034000" />
+    <option name="totallyTimeSpent" value="2253000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="25" width="1680" height="953" extended-state="6" />
@@ -372,8 +359,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/variant.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="17" column="32" lean-forward="true" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+        <state relative-caret-position="306">
+          <caret line="73" column="15" lean-forward="true" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="15" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -382,8 +369,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/my_plottrer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="167" column="53" lean-forward="true" selection-start-line="167" selection-start-column="53" selection-end-line="167" selection-end-column="53" />
+        <state relative-caret-position="477">
+          <caret line="154" column="30" selection-start-line="154" selection-start-column="30" selection-end-line="154" selection-end-column="30" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
