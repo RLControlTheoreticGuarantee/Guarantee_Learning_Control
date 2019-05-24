@@ -95,4 +95,17 @@ VARIANT = {
     'start_of_trial': 0,
 }
 ```
-
+### Example 3. SAC/LAC cartpole stability against perturbations
+VARIANT = {
+    'env_name': 'CartPolecost-v0',
+    'algorithm_name': 'LAC',
+    # 'algorithm_name': 'SAC_cost',
+    'additional_description': '-value-perturb',
+    'evaluate': False,
+    'train':False,
+    'evaluation_frequency': 2048,
+    'num_of_paths': 1,
+    'num_of_trials': 500,
+    'store_last_n_paths': 10,
+    'start_of_trial': 0,
+}
