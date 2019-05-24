@@ -96,6 +96,8 @@ VARIANT = {
 }
 ```
 ### Example 3. SAC/LAC cartpole stability against perturbations
+When you get the trained policy, you could run ``` python main_for_sac.py ``` with this variant.
+ 
 ```bash
 VARIANT = {
     'env_name': 'CartPolecost-v0',
