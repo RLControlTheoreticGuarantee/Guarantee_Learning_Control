@@ -506,7 +506,7 @@ def eval(variant):
     a_upperbound = env.action_space.high
     a_lowerbound = env.action_space.low
     policy = policy_build_fn(a_dim, s_dim, policy_params)
-    if 'cartpole' in env_name:
+    if 'CartPole' in env_name:
         mag = env_params['impulse_mag']
     # For analyse
     Render = env_params['eval_render']
@@ -526,7 +526,7 @@ def eval(variant):
                 env.render()
             a = policy.choose_action(s, True)
             action = a_lowerbound + (a + 1.) * (a_upperbound - a_lowerbound) / 2
-            if j ==100 and 'cartpole'in env_name:
+            if j ==100 and 'CartPole'in env_name:
 
                 impulse = mag * np.sign(s[0])
                 # print('impulse comming:',impulse)

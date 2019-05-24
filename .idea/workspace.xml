@@ -3,8 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="94a88117-502f-4592-ad64-e6e322291e6e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/LAC/LAC_V1.py" beforeDir="false" afterPath="$PROJECT_DIR$/LAC/LAC_V1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LAC/SAC_V2.py" beforeDir="false" afterPath="$PROJECT_DIR$/LAC/SAC_V2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LAC/SRDDPG_V8.py" beforeDir="false" afterPath="$PROJECT_DIR$/LAC/SRDDPG_V8.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/cartpole_cost/LAC-value-perturb/0/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/cartpole_cost/LAC-value-perturb/0/model.ckpt.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/cartpole_cost/LAC-value-perturb/0/model.ckpt.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/cartpole_cost/LAC-value-perturb/0/model.ckpt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/cartpole_cost/LAC-value-perturb/0/progress.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/cartpole_cost/LAC-value-perturb/eval/0/progress.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/cartpole_cost/SAC_cost-value-perturb/0/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/cartpole_cost/SAC_cost-value-perturb/0/model.ckpt.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/cartpole_cost/SAC_cost-value-perturb/0/model.ckpt.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/cartpole_cost/SAC_cost-value-perturb/0/model.ckpt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/cartpole_cost/SAC_cost-value-perturb/0/progress.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/cartpole_cost/SAC_cost-value-perturb/eval/0/progress.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_plottrer.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_plottrer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/variant.py" beforeDir="false" afterPath="$PROJECT_DIR$/variant.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,18 +25,51 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/xx$main_for_sac.coverage" NAME="main_for_sac Coverage Results" MODIFIED="1558689656671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/xx$main_for_sac.coverage" NAME="main_for_sac Coverage Results" MODIFIED="1558691909280" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/variant.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="24" lean-forward="true" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+            <state relative-caret-position="225">
+              <caret line="17" column="32" lean-forward="true" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/my_plottrer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="377">
+              <caret line="167" column="53" lean-forward="true" selection-start-line="167" selection-start-column="53" selection-end-line="167" selection-end-column="53" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Guarantee_Learning_Control/a2c/a2c.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="161">
+              <caret line="144" column="36" selection-start-line="144" selection-start-column="28" selection-end-line="144" selection-end-column="36" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Guarantee_Learning_Control/CPO/CPO.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="161">
+              <caret line="551" column="28" selection-start-line="551" selection-start-column="20" selection-end-line="551" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -45,8 +89,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LAC/LAC_V1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-123">
-              <caret line="495" column="20" selection-start-line="495" selection-start-column="20" selection-end-line="495" selection-end-column="20" />
+            <state relative-caret-position="169">
+              <caret line="528" column="36" selection-start-line="528" selection-start-column="28" selection-end-line="528" selection-end-column="36" />
               <folding>
                 <element signature="e#1#24#0" expanded="true" />
               </folding>
@@ -76,6 +120,12 @@
       </file>
     </leaf>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>baseline</find>
+      <find>cartpole</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -84,9 +134,9 @@
       <list>
         <option value="$PROJECT_DIR$/run.py" />
         <option value="$PROJECT_DIR$/ENV/env/classic_control/ENV_V1.py" />
-        <option value="$PROJECT_DIR$/LAC/LAC_V1.py" />
         <option value="$PROJECT_DIR$/LAC/SAC_V2.py" />
         <option value="$PROJECT_DIR$/LAC/SRDDPG_V8.py" />
+        <option value="$PROJECT_DIR$/LAC/LAC_V1.py" />
         <option value="$PROJECT_DIR$/variant.py" />
       </list>
     </option>
@@ -107,11 +157,6 @@
             <path>
               <item name="xx" type="b2602c69:ProjectViewProjectNode" />
               <item name="xx" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xx" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xx" type="462c0819:PsiDirectoryNode" />
-              <item name="LAC" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -140,7 +185,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="main_for_sac" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+    <configuration name="main_for_sac" type="PythonConfigurationType" factoryName="Python" singleton="false" nameIsGenerated="true">
       <module name="ttt" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -175,23 +220,23 @@
       <updated>1558598475367</updated>
       <workItem from="1558598476704" duration="76000" />
       <workItem from="1558688735097" duration="79000" />
-      <workItem from="1558689082445" duration="530000" />
+      <workItem from="1558689082445" duration="1879000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="685000" />
+    <option name="totallyTimeSpent" value="2034000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="953" extended-state="6" />
+    <frame x="1" y="25" width="1680" height="953" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25579977" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25579977" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3293556" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3293556" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.29952267" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -230,16 +275,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main_for_sac.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/nips/lib/python3.6/site-packages/tensorflow/python/training/saver.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
@@ -251,22 +286,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-325">
           <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LAC/SAC_V2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LAC/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -289,10 +308,62 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Guarantee_Learning_Control/CPO/CPO.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="551" column="28" selection-start-line="551" selection-start-column="20" selection-end-line="551" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_for_sac.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/dcd6c143e7f5ef3e13fab5f93e5762b9/Message/MessageTemp/0a24046b29543a7f9776638fc8da8a26/File/baselines 4/variant.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4287">
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LAC/SAC_V2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Guarantee_Learning_Control/a2c/a2c.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="144" column="36" selection-start-line="144" selection-start-column="28" selection-end-line="144" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LAC/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/LAC/LAC_V1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-123">
-          <caret line="495" column="20" selection-start-line="495" selection-start-column="20" selection-end-line="495" selection-end-column="20" />
+        <state relative-caret-position="169">
+          <caret line="528" column="36" selection-start-line="528" selection-start-column="28" selection-end-line="528" selection-end-column="36" />
           <folding>
             <element signature="e#1#24#0" expanded="true" />
           </folding>
@@ -301,10 +372,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/variant.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="24" lean-forward="true" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+        <state relative-caret-position="225">
+          <caret line="17" column="32" lean-forward="true" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_plottrer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="167" column="53" lean-forward="true" selection-start-line="167" selection-start-column="53" selection-end-line="167" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>

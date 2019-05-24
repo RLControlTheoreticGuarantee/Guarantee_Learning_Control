@@ -15,15 +15,15 @@ VARIANT = {
 }
 # VARIANT = {
 #     'env_name': 'CartPolecost-v0',
-#     'algorithm_name': 'LAC',
-#     # 'algorithm_name': 'SAC_cost',
+#     # 'algorithm_name': 'LAC',
+#     'algorithm_name': 'SAC_cost',
 #     'additional_description': '-value-perturb',
 #     'evaluate': False,
 #     'train':False,
 #     'evaluation_frequency': 2048,
 #     'num_of_paths': 1,
 #     'num_of_trials': 500,
-#     'store_last_n_paths': 10,
+#     'store_lastCartPolecost-v0_n_paths': 10,
 #     'start_of_trial': 0,
 # }
 VARIANT['log_path']='/'.join(['./log', VARIANT['env_name'], VARIANT['algorithm_name'] + VARIANT['additional_description']])
@@ -37,7 +37,7 @@ ENV_PARAMS = {
         'max_ep_steps': 250,
         'max_global_steps': int(3e5),
         'max_episodes': int(1e5),
-        'impulse_mag':85,
+        'impulse_mag':100,
         'eval_render': False,},
     'Antcons-v0': {
         'max_ep_steps': 200,
