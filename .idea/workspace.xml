@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="94a88117-502f-4592-ad64-e6e322291e6e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ENV/env/classic_control/ENV_V1.py" beforeDir="false" afterPath="$PROJECT_DIR$/ENV/env/classic_control/ENV_V1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LAC/LAC_V1.py" beforeDir="false" afterPath="$PROJECT_DIR$/LAC/LAC_V1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LAC/SAC_V2.py" beforeDir="false" afterPath="$PROJECT_DIR$/LAC/SAC_V2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LAC/SRDDPG_V8.py" beforeDir="false" afterPath="$PROJECT_DIR$/LAC/SRDDPG_V8.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/variant.py" beforeDir="false" afterPath="$PROJECT_DIR$/variant.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11,13 +13,16 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/xx$main_for_sac.coverage" NAME="main_for_sac Coverage Results" MODIFIED="1558689656671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/variant.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
+            <state relative-caret-position="195">
+              <caret line="13" column="24" lean-forward="true" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -26,12 +31,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/run.py">
+        <entry file="file://$PROJECT_DIR$/main_for_sac.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="623">
-              <caret line="280" column="66" selection-start-line="280" selection-start-column="66" selection-end-line="280" selection-end-column="66" />
+            <state relative-caret-position="255">
+              <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
               <folding>
-                <element signature="e#0#10#0" expanded="true" />
+                <element signature="e#0#23#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -40,17 +45,31 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LAC/LAC_V1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="535" column="52" selection-start-line="535" selection-start-column="52" selection-end-line="535" selection-end-column="52" />
+            <state relative-caret-position="-123">
+              <caret line="495" column="20" selection-start-line="495" selection-start-column="20" selection-end-line="495" selection-end-column="20" />
+              <folding>
+                <element signature="e#1#24#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ENV/env/classic_control/ENV_V1.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/LAC/utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+            <state>
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/LAC/SAC_V2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -63,9 +82,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/variant.py" />
         <option value="$PROJECT_DIR$/run.py" />
         <option value="$PROJECT_DIR$/ENV/env/classic_control/ENV_V1.py" />
+        <option value="$PROJECT_DIR$/LAC/LAC_V1.py" />
+        <option value="$PROJECT_DIR$/LAC/SAC_V2.py" />
+        <option value="$PROJECT_DIR$/LAC/SRDDPG_V8.py" />
+        <option value="$PROJECT_DIR$/variant.py" />
       </list>
     </option>
   </component>
@@ -85,24 +107,6 @@
             <path>
               <item name="xx" type="b2602c69:ProjectViewProjectNode" />
               <item name="xx" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xx" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xx" type="462c0819:PsiDirectoryNode" />
-              <item name="ENV" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xx" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xx" type="462c0819:PsiDirectoryNode" />
-              <item name="ENV" type="462c0819:PsiDirectoryNode" />
-              <item name="env" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xx" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xx" type="462c0819:PsiDirectoryNode" />
-              <item name="ENV" type="462c0819:PsiDirectoryNode" />
-              <item name="env" type="462c0819:PsiDirectoryNode" />
-              <item name="classic_control" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="xx" type="b2602c69:ProjectViewProjectNode" />
@@ -135,6 +139,30 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="main_for_sac" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="ttt" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/nips/bin/python3.6" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main_for_sac.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SvnConfiguration">
     <configuration>$USER_HOME$/.subversion</configuration>
   </component>
@@ -147,22 +175,23 @@
       <updated>1558598475367</updated>
       <workItem from="1558598476704" duration="76000" />
       <workItem from="1558688735097" duration="79000" />
+      <workItem from="1558689082445" duration="530000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="155000" />
+    <option name="totallyTimeSpent" value="685000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="953" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25274727" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25579977" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3293556" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -184,13 +213,10 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/variant.py">
+    <entry file="file://$USER_HOME$/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/dcd6c143e7f5ef3e13fab5f93e5762b9/Message/MessageTemp/143e8e636bd2a02cd71ca4c5278b74d0/File/ENV_V1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="225">
+          <caret line="20" lean-forward="true" selection-end-line="256" />
         </state>
       </provider>
     </entry>
@@ -204,24 +230,82 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LAC/LAC_V1.py">
+    <entry file="file://$PROJECT_DIR$/main_for_sac.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="535" column="52" selection-start-line="535" selection-start-column="52" selection-end-line="535" selection-end-column="52" />
+        <state relative-caret-position="255">
+          <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/dcd6c143e7f5ef3e13fab5f93e5762b9/Message/MessageTemp/143e8e636bd2a02cd71ca4c5278b74d0/File/ENV_V1.py">
+    <entry file="file://$USER_HOME$/nips/lib/python3.6/site-packages/tensorflow/python/training/saver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="20" lean-forward="true" selection-end-line="256" />
+        <state relative-caret-position="178">
+          <caret line="1263" selection-start-line="1263" selection-end-line="1263" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ENV/env/classic_control/ENV_V1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
+        <state relative-caret-position="-325">
           <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LAC/SAC_V2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LAC/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LAC/SRDDPG_V8.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="e#1#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LAC/squash_bijector.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LAC/LAC_V1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-123">
+          <caret line="495" column="20" selection-start-line="495" selection-start-column="20" selection-end-line="495" selection-end-column="20" />
+          <folding>
+            <element signature="e#1#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/variant.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="24" lean-forward="true" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

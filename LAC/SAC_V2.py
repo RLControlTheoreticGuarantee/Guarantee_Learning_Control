@@ -7,10 +7,10 @@ import tensorflow_probability as tfp
 from collections import OrderedDict, deque
 import os
 from copy import deepcopy
-from baselines.variant import VARIANT, get_env_from_name, get_policy, get_train
+from variant import VARIANT, get_env_from_name, get_policy, get_train
 from .utils import get_evaluation_rollouts, evaluate_rollouts, evaluate_training_rollouts
-from baselines import logger
-from baselines.safety_constraints import get_safety_constraint_func
+import logger
+from safety_constraints import get_safety_constraint_func
 
 SCALE_DIAG_MIN_MAX = (-20, 2)
 
