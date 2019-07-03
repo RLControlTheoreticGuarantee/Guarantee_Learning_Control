@@ -113,3 +113,9 @@ VARIANT = {
     'start_of_trial': 0,
 }
 ```
+ ## Reference
+
+[1] [Reinforcement-learning-with-tensorflow](https://github.com/MorvanZhou/Reinforcement-learning-with-tensorflow)
+[2] [Baselines](https://github.com/openai/baselines)  
+[3] [Rllab](https://github.com/rll/rllab)
+
