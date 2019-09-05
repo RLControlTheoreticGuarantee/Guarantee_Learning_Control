@@ -268,17 +268,20 @@ if __name__ == '__main__':
     for i in range(0,num_of_trials):
     # log_path = './log/' + datetime.datetime.now().strftime("openai-%Y-%m-%d-%H-%M-%S-%f")
         alg = 'ppo2_lyapunov'
-        additional_description ='-test'
-        # env = 'Pointcircle-v0'
+        additional_description ='-clip-0.8'
+        env = 'Pointcircle-v0'
         # env = 'Antcons-v0'
         # env = 'HalfCheetahcons-v0'
         # env = 'Quadrotorcons-v0'
-        env = 'PongNoFrameskip-v5'
+        # env = 'PongNoFrameskip-v5'
+        # env = 'Point-v1'
         log_path = './log/' + env + '/' + alg + additional_description + '/' + str(i)
         alg = ['--alg=' + alg]
         eval = ['--evaluate=False']
         n_of_paths = ['--evaluation_paths=10']
-        info = ['--num_timesteps=2e7', '--save_path=./Model/'+env]
+
+        info = ['--num_timesteps=5e6', '--save_path=./Model/'+env]
+
         env = ['--env=' + env, ]
         sys.argv = sys.argv + alg + env + info + eval + n_of_paths
         main(sys.argv)

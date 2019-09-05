@@ -71,9 +71,27 @@ class PointEnv(mujoco_env.MujocoEnv, utils.EzPickle):
         ])
 
     def reset_model(self):
+
+        qpos = self.init_qpos
+        qvel = self.init_qvel
+        x = np.random.uniform(-2.4, 2.4, [1])[0]
+        y = np.random.uniform(-10, 10, [1])[0]
+        qpos[0] = x
+        qpos[1] = y
+        self.set_state(qpos, qvel)
+        return self.get_current_obs()
+
+    def recovery_init(self, magnitude):
         qpos = self.init_qpos
         qvel = self.init_qvel
         self.set_state(qpos, qvel)
+        sim_state = self.sim.get_state()
+        x_joint_i = self.sim.model.get_joint_qpos_addr("ballx")
+        y_joint_i = self.sim.model.get_joint_qpos_addr("bally")
+        sim_state.qpos[x_joint_i] = np.sign(np.random.uniform(-1, 1, [1])[0]) * magnitude
+        sim_state.qpos[y_joint_i] = np.random.uniform(-10, 10, [1])[0]
+        self.sim.set_state(sim_state)
+
         return self.get_current_obs()
 
     def viewer_setup(self):

@@ -2,7 +2,7 @@
 import tensorflow as tf
 import numpy as np
 import time
-from SAC.squash_bijector import SquashBijector
+from SSAC.squash_bijector import SquashBijector
 import tensorflow_probability as tfp
 from collections import OrderedDict, deque
 import os
@@ -311,6 +311,15 @@ class SSAC(object):
 
         save_path = self.saver.save(self.sess, path+"/model.ckpt")
         print("Save to path: ", save_path)
+
+    def restore(self, path):
+        model_file = tf.train.latest_checkpoint(path+'/')
+        if model_file is None:
+            success_load = False
+            return success_load
+        self.saver.restore(self.sess, model_file)
+        success_load = True
+        return success_load
 
 
 def train(variant):

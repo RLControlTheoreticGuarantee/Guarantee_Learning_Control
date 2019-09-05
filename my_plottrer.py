@@ -145,15 +145,16 @@ def plot_results(results,alg_list, contents, figsize = None):
 
     return
 ENV_LIST = ['CartPolecons-v0',
-            'CartPolecost-v0',
-            'Antcons-v0',
-            'HalfCheetahcons-v0',
-            'PongNoFrameskip-v5',
-            'Pointcircle-v0',
+            'cartpole',
+            'HalfCheetah-v4',
+            'PointCircle-v1',
+            'PongNoFrameskip-v4',
+            'cartpole_cost',
             'FetchReach-v1',
-            'Quadrotorcons-v0',
-            'Quadrotorcost-v0'
-            'Carcost-v0']
+            'Antcons-v0',
+            'Quadrotor-v1',
+            'Quadrotor-v1_cost',
+            'car_env']
 
 PLOT_CONTENT = ['eprewmean', 'eplrewmean','violation_times','eplenmean','lyapunov_lambda', 'eval_eprewmean', 'eval_eplrewmean']
 ALG_LIST = ['ppo2', 'SAC','CPO', 'LAC']
@@ -164,7 +165,7 @@ def main(args,alg_list = ALG_LIST, content=PLOT_CONTENT,env=ENV_LIST):
     plot_results(results,alg_list, content)
 if __name__ == '__main__':
 
-    args = {'plot_list':[str(i) for i in range(0,1)],
+    args = {'plot_list':[str(i) for i in range(0,5)],
             'formal_plot':False,
             # 'ylim':[0,50],
             }
@@ -172,5 +173,5 @@ if __name__ == '__main__':
     # args = {'plot_list': [str(i) for i in range(1)]}
     alg_list = ALG_LIST[0:4]
     content = PLOT_CONTENT[0:2]
-    env = ENV_LIST[0:1]
+    env = ENV_LIST[7:8]
     main( args, alg_list, content, env)

@@ -42,5 +42,16 @@ class HalfCheetahEnv_lya(mujoco_env.MujocoEnv, utils.EzPickle):
         self.set_state(qpos, qvel)
         return self._get_obs()
 
+    def recovery_init(self, magnitude):
+        qpos = self.init_qpos
+        qvel = self.init_qvel
+        self.set_state(qpos, qvel)
+        sim_state = self.sim.get_state()
+        # x_joint_i = self.sim.model.get_joint_qpos_addr("ballx")
+        sim_state.qvel[0] = np.random.uniform(-0.1, 0.1) + magnitude
+        self.sim.set_state(sim_state)
+
+        return self._get_obs()
+
     def viewer_setup(self):
         self.viewer.cam.distance = self.model.stat.extent * 0.5

@@ -62,11 +62,11 @@ class CartPoleEnv_cost(gym.Env):
         self.total_mass = (self.masspole + self.masscart)
         self.length = 0.5  # actually half the pole's length
         self.polemass_length = (self.masspole * self.length)
-        self.force_mag = 20
-        self.tau = 0.02  # seconds between state updates
+        self.force_mag = 200
+        self.tau = 0.005  # seconds between state updates
         self.kinematics_integrator = 'euler'
         self.cons_pos = 4
-        self.target_pos = 6
+        self.target_pos = 0
         # Angle at which to fail the episode
         self.theta_threshold_radians = 20 * 2 * math.pi / 360
         # self.theta_threshold_radians = 12 * 2 * math.pi / 360
@@ -76,7 +76,14 @@ class CartPoleEnv_cost(gym.Env):
         # FOR DATA
         self.max_v = 50
         self.max_w = 50
-
+        # self.A = np.array([[1, 0.0200000000000000, -0.000146262956164120, -9.75295709398121e-07],
+        #                    [0, 1, -0.0146184465178444, -0.000146262956164120],
+        #                    [0, 0, 0.996782214976383, 0.0199785434944732],
+        #                    [0, 0, -0.321605822193865, 0.996782214976383]])
+        # self.B = np.array([[0.000195114814924033],
+        #                    [0.0195107679379903],
+        #                    [0.000292525910329313],
+        #                    [0.0292368928359034]])
         # Angle limit set to 2 * theta_threshold_radians so failing observation is still within bounds
         high = np.array([
             self.x_threshold * 2,
@@ -97,7 +104,28 @@ class CartPoleEnv_cost(gym.Env):
         self.np_random, seed = seeding.np_random(seed)
         return [seed]
 
-    def step(self, action, impulse=0):
+    def set_params(self, length, mass_of_cart, mass_of_pole, gravity):
+        self.gravity = gravity
+        self.length = length
+        self.masspole = mass_of_pole
+        self.masscart = mass_of_cart
+        self.total_mass = (self.masspole + self.masscart)
+        self.polemass_length = (self.masspole * self.length)
+
+    def get_params(self):
+
+        return self.length, self.masspole, self.masscart, self.gravity
+
+    def reset_params(self):
+
+        self.gravity = 10
+        self.masscart = 1
+        self.masspole = 0.1
+        self.length = 0.5
+        self.total_mass = (self.masspole + self.masscart)
+        self.polemass_length = (self.masspole * self.length)
+
+    def step(self, action, impulse=0, process_noise=np.zeros([5])):
         a = 0
         action = np.clip(action, self.action_space.low, self.action_space.high)
         # self.gravity = np.random.normal(10, 2)
@@ -105,36 +133,38 @@ class CartPoleEnv_cost(gym.Env):
         # self.masspole = np.random.normal(0.1, 0.02)
         self.total_mass = (self.masspole + self.masscart)
         state = self.state
+
         x, x_dot, theta, theta_dot = state
-        force = np.random.normal(action, 1)# wind
-        force = force + impulse
+        force = np.random.normal(action, 0)# wind
+        force = force + process_noise[0] + impulse
         # force = action
         costheta = math.cos(theta)
         sintheta = math.sin(theta)
-        temp = np.random.normal((force + self.polemass_length * theta_dot * theta_dot * sintheta) / self.total_mass,0)
-        thetaacc = np.random.normal((self.gravity * sintheta - costheta * temp) / (
-                    self.length * (4.0 / 3.0 - self.masspole * costheta * costheta / self.total_mass)),0)
-        xacc = np.random.normal(temp - self.polemass_length * thetaacc * costheta / self.total_mass,0)
+        temp = (force + self.polemass_length * theta_dot * theta_dot * sintheta) / self.total_mass
+        thetaacc = (self.gravity * sintheta - costheta * temp) / (
+                self.length * (4.0 / 3.0 - self.masspole * costheta * costheta / self.total_mass))
+        xacc = temp - self.polemass_length * thetaacc * costheta / self.total_mass
         if self.kinematics_integrator == 'euler':
-            x = x + self.tau * x_dot
-            x_dot = x_dot + self.tau * xacc
+            x = x + self.tau * x_dot+ process_noise[2]
+            x_dot = x_dot + self.tau * xacc + process_noise[4]
             # x_dot = np.clip(x_dot, -self.max_v, self.max_v)
-            theta = theta + self.tau * theta_dot
-            theta_dot = theta_dot + self.tau * thetaacc
+            theta = theta + self.tau * theta_dot + process_noise[1]
+            theta_dot = theta_dot + self.tau * thetaacc + process_noise[3]
+
             # theta_dot = np.clip(theta_dot, -self.max_w, self.max_w)
         elif self.kinematics_integrator == 'friction':
             xacc = -0.1 * x_dot / self.total_mass + temp - self.polemass_length * thetaacc * costheta / self.total_mass
-            x = x + self.tau * x_dot
-            x_dot = x_dot + self.tau * xacc
+            x = x + self.tau * x_dot + process_noise[2]
+            x_dot = x_dot + self.tau * xacc + process_noise[4]
             # x_dot = np.clip(x_dot, -self.max_v, self.max_v)
-            theta = theta + self.tau * theta_dot
-            theta_dot = theta_dot + self.tau * thetaacc
+            theta = theta + self.tau * theta_dot + process_noise[1]
+            theta_dot = theta_dot + self.tau * thetaacc+ process_noise[3]
             # theta_dot = np.clip(theta_dot, -self.max_w, self.max_w):
         else:  # semi-implicit euler
-            x_dot = x_dot + self.tau * xacc
-            x = x + self.tau * x_dot
-            theta_dot = theta_dot + self.tau * thetaacc
-            theta = theta + self.tau * theta_dot
+            x_dot = x_dot + self.tau * xacc + process_noise[4]
+            x = x + self.tau * x_dot  + process_noise[2]
+            theta_dot = theta_dot + self.tau * thetaacc+ process_noise[3]
+            theta = theta + self.tau * theta_dot + process_noise[1]
         self.state = np.array([x, x_dot[0], theta, theta_dot[0]])
         done = abs(x) > self.x_threshold \
                or theta < -self.theta_threshold_radians \
@@ -159,6 +189,20 @@ class CartPoleEnv_cost(gym.Env):
             violation_of_constraint = 1
         else:
             violation_of_constraint = 0
+
+
+        # ## linear update
+        # self.linear_state = self.A @ self.linear_state + self.B @ action
+        # x = self.linear_state[0]
+        # theta = self.linear_state[2]
+        # done = abs(x) > self.x_threshold \
+        #        or theta < -self.theta_threshold_radians \
+        #        or theta > self.theta_threshold_radians
+        # done = bool(done)
+        # if x < -self.x_threshold \
+        #         or x > self.x_threshold:
+        #     a = 1
+
         return self.state, cost, done, dict(hit=a,
                                             l_rewards=l_rewards,
                                             cons_pos=self.cons_pos,
@@ -168,10 +212,11 @@ class CartPoleEnv_cost(gym.Env):
                                             )
 
     def reset(self):
-        self.state = self.np_random.uniform(low=-0.2, high=0.2, size=(4,))
+        self.state = self.np_random.uniform(low=-0.1, high=0.1, size=(4,))
         # self.state[0] = self.np_random.uniform(low=5, high=6)
         self.state[0] = self.np_random.uniform(low=-5, high=5)
         self.steps_beyond_done = None
+        # self.linear_state = np.array(self.state)
         return np.array(self.state)
 
     def render(self, mode='human'):
@@ -218,11 +263,11 @@ class CartPoleEnv_cost(gym.Env):
             self.viewer.add_geom(self.target)
 
 
-            # Render the constrain position
-            self.cons = rendering.Line((self.cons_pos * scale + screen_width / 2.0, 0),
-                                         (self.cons_pos * scale + screen_width / 2.0, screen_height))
-            self.cons.set_color(0, 0, 1)
-            self.viewer.add_geom(self.cons)
+            # # Render the constrain position
+            # self.cons = rendering.Line((self.cons_pos * scale + screen_width / 2.0, 0),
+            #                              (self.cons_pos * scale + screen_width / 2.0, screen_height))
+            # self.cons.set_color(0, 0, 1)
+            # self.viewer.add_geom(self.cons)
 
         if self.state is None: return None
 

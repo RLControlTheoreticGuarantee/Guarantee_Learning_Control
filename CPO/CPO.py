@@ -14,6 +14,7 @@ import tensorflow as tf
 import numpy as np
 from collections import OrderedDict, deque
 import logger
+from copy import deepcopy
 import os
 import time
 from variant import VARIANT, get_env_from_name, get_policy, get_train
@@ -58,15 +59,7 @@ def flatten_tf_tensors(tensors):
     else:
         return []
 
-def unflatten_tf_tensors(flattened, tensor_shapes):
-    tensor_sizes = list(map(np.prod, tensor_shapes))
-    indices = np.cumsum(tensor_sizes)[:-1]
-    return [tf.reshape(pair[0], pair[1]) for pair in zip(tf.split(flattened, indices), tensor_shapes)]
 
-def unflatten_tensors(flattened, tensor_shapes):
-    tensor_sizes = list(map(np.prod, tensor_shapes))
-    indices = np.cumsum(tensor_sizes)[:-1]
-    return [np.reshape(pair[0], pair[1]) for pair in zip(np.split(flattened, indices), tensor_shapes)]
 
 
 def split_flatten(flattened, tensor_shapes):
@@ -152,46 +145,7 @@ def cg_try(A, b, shapes, cg_iters=10, callback=None, verbose=True, residual_tol=
     if verbose: print(fmtstr % (i + 1, rdotr, np.linalg.norm(x)))  # pylint: disable=W0631
     return x
 
-# class Heassian(object):
-#
-#     def __init__(self, f, target, reg_coeff, sess):
-#         self.reg_coeff = reg_coeff
-#         params = target.get_params()
-#
-#         self.target = target
-#         self.sess = sess
-#         # gradients = tf.gradients(f, params)
-#         # flattened_grads = flatten_tf_tensors(gradients)
-#         seperate_flatten_params = [tf.reshape(p,[-1]) for p in params]
-#         H = tf.hessians(f,params)
-#         self.H = get_hessians_for_flatten_variables(H, self.target.get_params_shape())
-#
-#         self.xs = [new_tensor_like(None, p) for p in seperate_flatten_params]
-#
-#         Hx_plain_splits = [tf.matmul(H, x[:,tf.newaxis]) for H,x in zip(self.H, self.xs)]
-#         self.f_Hx_plain = flatten_tf_tensors(Hx_plain_splits)
-#
-#
-#     def build_eval(self, feed_dict):
-#
-#         def eval(x):
-#             # np.linalg.cholesky(self.sess.run(self.H[0], feed_dict))
-#
-#             xs = split_flatten(x,self.target.get_params_shape())
-#             [feed_dict.update({placeholder: value}) for placeholder, value in zip(self.xs, xs)]
-#
-#             return self.sess.run(self.f_Hx_plain, feed_dict)
-#
-#         return eval
-#
-#     def build_heassians_eval(self, feed_dict):
-#         self.H_values = self.sess.run(self.H, feed_dict)
-#         shapes = self.target.get_params_shape()
-#         def eval(x):
-#
-#             return f_Ax(self.H_values, x, shapes)
-#
-#         return eval
+
 
 class Heassian_for_flat_params(object):
 
@@ -338,7 +292,8 @@ class CPO(object):
 
 
         self.use_lyapunov = args['use_lyapunov']
-
+        self.finite_horizon = args['finite_horizon']
+        self.horizon = args['horizon']
         self.form_of_lyapunov = args['form_of_lyapunov']
         self.use_baseline = args['use_baseline']
 
@@ -490,7 +445,8 @@ class CPO(object):
 
         return np.squeeze(self.sess.run([self.v, self.l], {self.tfs: s}))
 
-    def update(self, s, s_, returns, l_returns, advs, l_advs, a, old_values, old_l_values, l_reward, safety_eval,cliprangenow, LR_C, LR_L, length_of_trajectory):
+    def update(self, s, s_, returns, l_returns, advs, l_advs, a, old_values, old_l_values, l_reward, finite_safety_values,
+               safety_eval,cliprangenow, LR_C, LR_L, length_of_trajectory):
         # advs = advs[:, np.newaxis]
         # l_advs = l_advs[:, np.newaxis]
         # returns = returns[:, np.newaxis]
@@ -498,7 +454,7 @@ class CPO(object):
         # l_reward = l_reward[:, np.newaxis]
         advs = (advs - advs.mean()) / (advs.std() + 1e-8)
         l_advs = (l_advs - l_advs.mean()) / (l_advs.std() + 1e-8)
-        inputs = [s, s_, returns, l_returns, advs, l_advs, a, old_values, old_l_values, l_reward,]
+        inputs = [s, s_, returns, l_returns, advs, l_advs, a, old_values, old_l_values, finite_safety_values, l_reward,]
 
         def subsampled_inputs(inputs,subsample_grouped_inputs = None):
             if self._subsample_factor < 1:
@@ -522,6 +478,7 @@ class CPO(object):
         sub_advs = subsampled_data[4]
         sub_l_advs = subsampled_data[5]
         sub_a = subsampled_data[6]
+        sub_finite_safety_values = subsampled_data[-2]
         sub_l_reward = subsampled_data[-1]
 
         if self.use_lyapunov:
@@ -537,8 +494,12 @@ class CPO(object):
                          self.safety_threshold: threshold}
         if self.use_lyapunov:
             if self.form_of_lyapunov == 'l_value':
-                feed_dict.update({self.target_of_l: l_returns, self.l_r: l_reward})
-                sub_feed_dict.update({self.target_of_l: sub_l_returns, self.l_r: sub_l_reward})
+                if self.finite_horizon:
+                    feed_dict.update({self.target_of_l: l_returns, self.l_r: l_reward})
+                    sub_feed_dict.update({self.target_of_l: sub_l_returns, self.l_r: sub_l_reward})
+                else:
+                    feed_dict.update({self.target_of_l: finite_safety_values, self.l_r: l_reward})
+                    sub_feed_dict.update({self.target_of_l: sub_finite_safety_values, self.l_r: sub_l_reward})
             elif self.form_of_lyapunov == 'l_reward':
                 feed_dict.update({self.target_of_l: l_reward, self.l_r: l_reward})
                 sub_feed_dict.update({self.target_of_l: sub_l_reward, self.l_r: sub_l_reward})
@@ -1176,6 +1137,8 @@ def train(variant):
             safety_evals.append(path_l_returns[0])
         safety_eval = np.mean(safety_evals)
 
+
+
         mb_advs = np.zeros_like(mb_rewards)
         lastgaelam = 0
         nextnonterminal = np.ones_like(mb_terminals) - mb_terminals
@@ -1201,6 +1164,31 @@ def train(variant):
             mb_l_advs[t] = lastgaelam = delta + gamma * safety_gae_lamda * nextnonterminal[t] * lastgaelam
         mb_l_returns = mb_l_advs + mb_l_values
 
+        if policy.finite_horizon and policy.form_of_lyapunov=='l_value':
+            r = deepcopy(mb_l_rewards)
+            terminal_index=[-1]
+            [terminal_index.append(i) for i,x in enumerate(mb_terminals) if x ==1.]
+            if mb_terminals[-1] != 1.:
+                terminal_index.append(len(r)-1)
+
+            mb_finite_safety_value = []
+
+            for t_0, t_1 in zip(terminal_index[:-1],terminal_index[1:]):
+
+                path = r[t_0+1:t_1+1]
+                path_length = len(path)
+                try:
+                    last_r = path[-1]
+                except IndexError:
+                    continue
+                path = np.concatenate((path, last_r * np.ones([policy.horizon])), axis=0)
+                safety_value = []
+                [safety_value.append(path[i:i + policy.horizon].sum()) for i in range(path_length)]
+                mb_finite_safety_value.extend(safety_value)
+
+            mb_finite_safety_value = np.array(mb_finite_safety_value)
+
+
         mblossvals = []
         inds = np.arange(sample_steps, dtype=int)
 
@@ -1215,7 +1203,7 @@ def train(variant):
 
         slices = (arr[inds] for arr in (mb_obs, mb_obs_, mb_returns, mb_l_returns, mb_advs,
                                           mb_l_advs, mb_actions, mb_values, mb_l_values,
-                                          mb_l_rewards))
+                                          mb_l_rewards, mb_finite_safety_value))
 
         # print(**slices)
         mblossvals.append(policy.update(*slices, safety_eval, cliprangenow, lr_c_now, lr_l_now, rescale))
