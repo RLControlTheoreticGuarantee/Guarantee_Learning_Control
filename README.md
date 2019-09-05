@@ -35,8 +35,8 @@ pip install matplotlib
 
 ```
 
-### Example 1. LSAC with CartPole
-For instance, to train a fully-connected network controlling MuJoCo Point-Circle using LPPO for 2M timesteps
+### Example 1. LSAC with Point-Circle
+For instance, to train a fully-connected network controlling MuJoCo Point-Circle using LSAC for 2M timesteps
 ```bash
 python main_for_sac.py
 ```
