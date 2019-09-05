@@ -1,5 +1,5 @@
-# Guarantee_Learning_Control
-Model Free Reinforcement Learning with Control Theoretic Guarantee
+# Safe Model-free Reinforcement Learning with Stability Guarantee
+Safe Model-free Reinforcement Learning with Stability Guarantee
 
 
 
@@ -35,42 +35,53 @@ pip install matplotlib
 
 ```
 
-### Example 1. LPPO with MuJoCo Point-Circle
+### Example 1. LSAC with CartPole
 For instance, to train a fully-connected network controlling MuJoCo Point-Circle using LPPO for 2M timesteps
 ```bash
-python run.py
-```
-
-The hyperparameters, the tasks and the learning algorithm can be change via change the run.py, for example
-```bash
- alg = 'ppo2_lyapunov'
- # alg='ppo2'
- additional_description ='-clip-0.8'
- env = 'Pointcircle-v0'
-# env = 'Antcons-v0'
-# env = 'HalfCheetahcons-v0'
-# env = 'Quadrotorcons-v0'
-# env = 'PongNoFrameskip-v5'
-# env = 'Point-v1'
-info = ['--num_timesteps=5e6', '--save_path=./Model/'+env]
-```
-### Example 2. LAC with continous cartpole
-```
 python main_for_sac.py
 ```
+
+
 The hyperparameters, the tasks and the learning algorithm can be change via change the variant.py, for example
 ```bash
 VARIANT = {
-    'env_name': 'Carcost-v0',
-    'algorithm_name': 'LAC',
-    'additional_description': '-continuous-25',
+    'env_name': 'Pointcircle-v0',
+    # 'env_name': 'CartPolecons-v0',
+    # 'env_name': 'HalfCheetahcons-v0',
+    'algorithm_name': 'LSAC',
+    'additional_description': '-new-init-clip-80',
+    'disturber': 'SAC',
     'evaluate': False,
     'train':True,
     'evaluation_frequency': 2048,
     'num_of_paths': 1,
-    'num_of_trials': 10,
-    'store_last_n_paths': 5,
-    'start_of_trial': 0,
+    'num_of_trials': 5,
+    'store_last_n_paths': 10,
+    'start_of_trial': 2,
+
+    # Evaluation Settings
+
+    # 'evaluation_form': 'impulse',
+    'evaluation_form': 'safety_eval',
+    # 'evaluation_form': 'param_variation',
+    # 'evaluation_form': 'trained_disturber',
+    'eval_list': [
+
+        # 'MPC',
+        # 'LQR',
+        # 'LSAC-clip-20',
+        'LSAC-new-init-clip-80',
+        'LSAC-new-init-clip-50',
+        'SSAC-new-init',
+        'SAC-new-init',
+        'LSAC-new-init',
+        'SSAC',
+        # 'SSAC',
+        # 'SAC',
+        # 'LAC',
+        # 'RLAC',
+    ],
+    'trials_for_eval': [str(i) for i in range(0, 10)],
 }
 ```
 
